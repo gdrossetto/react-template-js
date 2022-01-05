@@ -10,8 +10,16 @@ module.exports = {
     port: 3000,
     hot: true,
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+  },
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /nodeModules/,
+        use: ["ts-loader"],
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /nodeModules/,
@@ -23,10 +31,15 @@ module.exports = {
         },
       },
       {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
+
   plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
 };
