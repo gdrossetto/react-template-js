@@ -4,4 +4,4 @@ import App from "./App";
 
 const appElement = document.getElementById("app");
 
-ReactDOM.render(<App />, appElement);
+ReactDOM.render(<App text={"React Project"} />, appElement);
